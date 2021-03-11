@@ -1,0 +1,6 @@
+{
+    "require": {
+        "lukasss93/telegrambot-php": "^1.12",
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
