@@ -11,7 +11,7 @@ class Api {
     protected $bot;
     
     protected $statuses = [
-        0 => 'Urządzenie wyłączone',
+        Status::URZADZENIE_WYLACZONE => 'Urządzenie wyłączone',
         Status::DRZWI_ZAMKNIETE => 'Drzwi zamknięte!',
         Status::DRZWI_OTWARTE => 'Drzwi otwarte!'
     ];
@@ -26,18 +26,22 @@ class Api {
 
     public function processRequests() {
         
-        if(!$this->checkAuth())
-        {
-            header("Status: 403 Forbidden");
-            echo json_encode(['status' => 403, 'error' => true]);
+        if(!$this->checkAuth()) {
+            header("Status: 401 Unauthorized");
+            echo json_encode(['status' => 401, 'error' => true]);
             die;
         }
-        try{
+        try {
             switch($_REQUEST['akcja']) {
-                case 'getdevice': 
+                case 'getDevice': 
                     $deviceId = $_REQUEST['id'];
                     $device = DB::getDevice($deviceId);
-                    echo json_encode($device);
+                    echo json_encode([
+                        'id' => $device['id'],
+                        'nazwa' => $device['nazwa'],
+                        'status' => $device['status'],
+                        'new_status' => $device['new_status']
+                    ]);
                     break;
                 case 'updateStatus':
                     $status = $_REQUEST['status'];
@@ -54,11 +58,13 @@ class Api {
                     ]);
                     echo json_encode(['status' => 200, 'updated' => true]);
                     break;
+                default:
+                    header("Status: 400 Bad request");
+                    echo json_encode(['status' => 400, 'error' => true]);
             }
             die;
         }
-        catch(PDOException $e)
-        {
+        catch(PDOException $e) {
             header("Status: 500 Internal Server Error");
             echo json_encode(['status' => 500, 'error' => true]);
             die;
@@ -66,8 +72,8 @@ class Api {
 
     }
 
-    protected function checkAuth()
-    {
+    protected function checkAuth() {
+
         $headers = getallheaders();
         $key = $headers['x-api-key'];
         $secret = $_ENV['APIKEY'];
@@ -78,5 +84,5 @@ class Api {
     }
 }
 
-$api = new APi();
+$api = new Api();
 $api->processRequests();

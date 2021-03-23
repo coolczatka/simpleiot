@@ -17,23 +17,21 @@ $bot = new TelegramBot($secret);
 $update = $bot->getWebhookUpdate();
 $command = $update->message->getCommand();
 $chatId = $_ENV['CHATID'];
-if($command == '/getchatid')
-{
+$chatIdAlt = $_ENV['ALT_CHATID'];
+if($command == '/getchatid') {
     $bot->sendMessage([
         'chat_id' => $update->message->chat->id,
         'text' => $update->message->chat->id
     ]);
 }
-if($chatId != $update->message->chat->id)
-{
+if(in_array($update->message->chat->id, [$chatId, $chatIdAlt]) {
     $bot->sendMessage([
         'chat_id' => $update->message->chat->id,
         'text' => 'Nie możesz nic zrobić tym botem. Nic tu po tobie!'
     ]);
     die;
 }
-switch($command)
-{
+switch($command) {
     case '/stajenka_zamknij':
         $bot->sendMessage([
             'chat_id' => $update->message->chat->id,

@@ -20,8 +20,7 @@ class DB {
         }
     }
 
-    public static function getDevice($id)
-    {
+    public static function getDevice($id) {
         $pdo = self::getInstance();
         $stmt = $pdo->prepare("SELECT * FROM devices WHERE id = ?");
         $stmt->bindParam(1, $id, PDO::PARAM_INT);
@@ -29,8 +28,7 @@ class DB {
         return $stmt->fetch();
     }
 
-    public static function updateDeviceStatus($id, $status)
-    {
+    public static function updateDeviceStatus($id, $status) {
         $pdo = self::getInstance();
         $stmt = $pdo->prepare("UPDATE devices SET status=? WHERE id = ?");
         $stmt->bindParam(1, $status, PDO::PARAM_INT);
@@ -39,8 +37,7 @@ class DB {
         return true;
     }
 
-    public static function updateDeviceNewStatus($id, $status)
-    {
+    public static function updateDeviceNewStatus($id, $status) {
         $pdo = self::getInstance();
         $stmt = $pdo->prepare("UPDATE devices SET new_status=? WHERE id = ?");
         $stmt->bindParam(1, $status, PDO::PARAM_INT);
