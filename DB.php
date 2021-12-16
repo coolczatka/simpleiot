@@ -83,4 +83,16 @@ class DB {
         }
         return $metadata;
     }
+
+    public static function getMetaByKey($key)
+    {
+        $pdo = self::getInstance();
+        $stmt = $pdo->prepare("SELECT * FROM metadata WHERE `key`= ?");
+        $stmt->bindParam(1, $key, PDO::PARAM_STR);
+        $stmt->execute();
+        $metadata = $stmt->fetch();
+        $crypt = new Crypt($_ENV['AESKEY']);
+        $metadata['value'] = $metadata['encrypted'] ? $crypt->decrypt($metadata['value']) : $metadata['value'];
+        return $metadata;
+    }
 }

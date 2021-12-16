@@ -62,7 +62,19 @@ switch($command) {
             'text' => utf8_encode($x)
         ]);
         break;
-
+    case '/kp':
+        $jskp = DB::getMetaByKey('jak_sie_konczy_palic');
+        $photo = base64_decode($jskp['value']);
+        $tempfile = fopen('temp.jpeg', 'wb');
+        fwrite($tempfile, $photo);
+        fclose($tempfile);
+        $ch = curl_file_create('temp.jpeg');
+        $bot->sendPhoto([
+            'chat_id' => $update->message->chat->id,
+            'photo' => $ch
+        ]);
+        unlink('temp.jpeg');
+        break;
     case '/start':
     case '/help':
         $bot->sendMessage([
@@ -70,7 +82,8 @@ switch($command) {
             'text' => '/stajenka_zamknij - zamyka stajnie'.PHP_EOL
                         .'/stajenka_otworz - otwiera stajnie'.PHP_EOL
                         .'/help - komendy'.PHP_EOL
-			.'/hasla - hasla do rzeczy'.PHP_EOL
+			            .'/hasla - hasla do rzeczy'.PHP_EOL
+                        .'/kp - instrukcja jak się kończy palić'.PHP_EOL
                         .'/getchatid - id chatu'
         ]);
         break;

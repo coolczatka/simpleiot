@@ -77,6 +77,10 @@ class Api {
                     $list = DB::getMetaList('password');
                     echo json_encode($list);
                     break;
+                case 'getMetaByKey':
+                    $list = DB::getMetaByKey($_REQUEST['key']);
+                    echo json_encode($list);
+                    break;
                 default:
                     header("Status: 400 Bad request");
                     echo json_encode(['status' => 400, 'error' => true]);
