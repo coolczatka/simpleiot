@@ -45,4 +45,42 @@ class DB {
         $stmt->execute();
         return true;
     }
+
+    public static function insertMetadata($key, $value, $type, $encrypted, $label)
+    {
+        $pdo = self::getInstance();
+        $crypt = new Crypt($_ENV['AESKEY']);
+        $newvalue = '';
+        if($encrypted){
+            $newvalue = $crypt->encrypt($value);
+        }
+        else {
+            $newvalue = $value;
+        }
+
+        $stmt = $pdo->prepare("INSERT INTO metadata (`key`, `value`, `type`, `encrypted`, `label`) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bindParam(1, $key, PDO::PARAM_STR);
+        $stmt->bindParam(2, $newvalue, PDO::PARAM_STR);
+        $stmt->bindParam(3, $type, PDO::PARAM_STR);
+        $stmt->bindParam(4, $encrypted, PDO::PARAM_INT);
+        $stmt->bindParam(5, $label, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return true;
+    }
+
+    public static function getMetaList($type)
+    {
+        $pdo = self::getInstance();
+        $stmt = $pdo->prepare("SELECT * FROM metadata WHERE `type` = ?");
+        $stmt->bindParam(1, $type, PDO::PARAM_STR);
+        $stmt->execute();
+        $metadata = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $crypt = new Crypt($_ENV['AESKEY']);
+        foreach($metadata as &$row) {
+            if((bool)$row['encrypted'])
+                $row['value'] = $crypt->decrypt($row['value']);
+        }
+        return $metadata;
+    }
 }

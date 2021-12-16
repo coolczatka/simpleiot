@@ -2,6 +2,7 @@
 require __DIR__ . '/vendor/autoload.php';
 require 'DB.php';
 require 'Status.php';
+require_once 'Crypt.php';
 
 use TelegramBot\TelegramBot;
 use Dotenv\Dotenv;
@@ -58,6 +59,24 @@ class Api {
                     ]);
                     echo json_encode(['status' => 200, 'updated' => true]);
                     break;
+                case 'insertMeta':
+                    $key = $_REQUEST['key'];
+                    $value = $_REQUEST['value'];
+                    $type = $_REQUEST['type'];
+                    $encrypted = $_REQUEST['encrypted'];
+                    $label = $_REQUEST['label'];
+                    $ok = DB::insertMetadata($key, $value, $type, $encrypted, $label);
+                    if(!$ok){
+                        header("Status: 400 Bad request");
+                        echo json_encode(['status' => 400, 'error' => true, 'm' => $ok]);
+                        die;
+                    }
+                    echo json_encode(['status' => 201, 'created' => true]);
+                    break;
+                case 'getPasswords':
+                    $list = DB::getMetaList('password');
+                    echo json_encode($list);
+                    break;
                 default:
                     header("Status: 400 Bad request");
                     echo json_encode(['status' => 400, 'error' => true]);
@@ -66,7 +85,7 @@ class Api {
         }
         catch(PDOException $e) {
             header("Status: 500 Internal Server Error");
-            echo json_encode(['status' => 500, 'error' => true]);
+            echo json_encode(['status' => 500, 'error' => true, 'detail' => $e->getMessage()]);
             die;
         }
 

@@ -1,0 +1,10 @@
+CREATE TABLE `metadata` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` text NOT NULL,
+  `value` text NOT NULL,
+  `type` text NOT NULL,
+  `encrypted` tinyint(1) NOT NULL DEFAULT 0,
+  `label` text NOT NULL DEFAULT ' ',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `key_unique` (`key`) USING HASH
+) ENGINE=InnoDB DEFAULT CHARSET=latin1
