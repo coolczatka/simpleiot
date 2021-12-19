@@ -75,6 +75,13 @@ switch($command) {
         ]);
         unlink('temp.jpeg');
         break;
+    case '/tpiec':
+        $bot->sendMessage([
+            'chat_id' => $update->message->chat->id,
+            'text' => 'Pobieram temperature z pieca'
+        ]);
+        DB::updateDeviceNewStatus(2, Status::WYSLIJ_WARTOSC);
+        break;
     case '/start':
     case '/help':
         $bot->sendMessage([
@@ -84,6 +91,7 @@ switch($command) {
                         .'/help - komendy'.PHP_EOL
 			            .'/hasla - hasla do rzeczy'.PHP_EOL
                         .'/kp - instrukcja jak się kończy palić'.PHP_EOL
+                        .'/tpiec - pobranie temperatury z pieca'.PHP_EOL
                         .'/getchatid - id chatu'
         ]);
         break;

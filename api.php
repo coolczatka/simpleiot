@@ -14,7 +14,9 @@ class Api {
     protected $statuses = [
         Status::URZADZENIE_WYLACZONE => 'Urządzenie wyłączone',
         Status::DRZWI_ZAMKNIETE => 'Drzwi zamknięte!',
-        Status::DRZWI_OTWARTE => 'Drzwi otwarte!'
+        Status::DRZWI_OTWARTE => 'Drzwi otwarte!',
+
+        Status::WYSLIJ_WARTOSC => '%s'
     ];
 
     public function __construct() {
@@ -47,6 +49,7 @@ class Api {
                 case 'updateStatus':
                     $status = $_REQUEST['status'];
                     $deviceId = $_REQUEST['id'];
+                    $
                     $ok = DB::updateDeviceStatus($deviceId, $status);
                     if(!$ok){
                         header("Status: 400 Bad request");
@@ -56,6 +59,21 @@ class Api {
                     $this->bot->sendMessage([
                         'chat_id' => $_ENV['CHATID'],
                         'text' => $this->statuses[$status]
+                    ]);
+                    echo json_encode(['status' => 200, 'updated' => true]);
+                    break;
+                case 'sendValue':
+                    $value = $_REQUEST['value'];
+                    $deviceId = $_REQUEST['id'];
+                    $ok = DB::updateDeviceNewStatus($deviceId, Status::NIC_NIE_ROB);
+                    if(!$ok){
+                        header("Status: 400 Bad request");
+                        echo json_encode(['status' => 400, 'error' => true]);
+                        die;
+                    }
+                    $this->bot->sendMessage([
+                        'chat_id' => $_ENV['CHATID'],
+                        'text' => sprintf($this->statuses[STATUS::WYSLIJ_WARTOSC], $value)
                     ]);
                     echo json_encode(['status' => 200, 'updated' => true]);
                     break;
