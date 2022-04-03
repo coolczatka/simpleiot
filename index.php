@@ -86,7 +86,7 @@ switch($command) {
         $args = $update->message->getArgs();
         if(count($args) < 2)
         {
-            $bot->sendMessage(['text' => 'Błędna ilość parametrów', 'chat_id' => $update->message->chat->id]);
+            $bot->sendMessage(['text' => utf8_encode('Zla ilosc parametrow'), 'chat_id' => $update->message->chat->id]);
             die;
         }
 
@@ -97,7 +97,7 @@ switch($command) {
         if($repeat == 0)
             $text .= ' '.$last;
         DB::addNewRemind($date, $text, $repeat);
-        $bot->sendMessage(['text' => 'Dodano przypomnienie na dzien '.$date, 'chat_id' => $update->message->chat->id]);
+        $bot->sendMessage(['text' => utf8_encode('Dodano przypomnienie na dzien '.$date), 'chat_id' => $update->message->chat->id]);
         break;
     case '/pokazprzypomnienia':
         $reminds = DB::getAllReminds();
@@ -109,17 +109,16 @@ switch($command) {
     case '/help':
         $bot->sendMessage([
             'chat_id' => $update->message->chat->id,
-            'text' => '/stajenka_zamknij - zamyka stajnie'.PHP_EOL
-                        .'/stajenka_otworz - otwiera stajnie'.PHP_EOL
+            'text' => utf8_encode('/zamknij - zamyka s'.PHP_EOL
+                        .'/otworz - otwiera s'.PHP_EOL
                         .'/help - komendy'.PHP_EOL
-			            .'/hasla - hasla do rzeczy'.PHP_EOL
-                        .'/kp - instrukcja jak się kończy palić'.PHP_EOL
+                        .'/hasla - hasla do rzeczy'.PHP_EOL
+                        .'/kp - instrukcja jak się konczy palic'.PHP_EOL
                         .'/tpiec - pobranie temperatury z pieca'.PHP_EOL
                         .'/przypomnij - ustaw przypomnienie rok-miesiac-dzien Tresc [r]'.PHP_EOL
                         .'/pokazprzypomnienia - lista przypomnien'.PHP_EOL
-                        .'/getchatid - id chatu'
+                        .'/getchatid - id chatu')
         ]);
         break;
 }
-
 die;
