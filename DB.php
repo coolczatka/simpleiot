@@ -46,6 +46,28 @@ class DB {
         return true;
     }
 
+    public static function addNewRemind($date, $text, $repeat = 0) {
+        $pdo = self::getInstance();
+        $stmt = $pdo->prepare("INSERT INTO reminds (`datetime`, `content`, `cyclical`) VALUES (?, ?, ?)");
+        $stmt->bindParam(1, $date, PDO::PARAM_STR);
+        $stmt->bindParam(2, $text, PDO::PARAM_STR);
+        $stmt->bindParam(3, $repeat, PDO::PARAM_INT);
+        $stmt->execute();
+        return true;
+    }
+    
+    public static function getReminds() {
+        $pdo = self::getInstance();
+        $stmt = $pdo->prepare("SELECT content FROM `reminds` WHERE `datetime` = CURRENT_DATE() OR (cyclical = 1 AND day(datetime) = day(now()) AND month(datetime) = month(now()))");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+    public static function getAllReminds() {
+        $pdo = self::getInstance();
+        $stmt = $pdo->prepare("SELECT * FROM `reminds` WHERE datetime > now() OR cyclical = 1");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
     public static function insertMetadata($key, $value, $type, $encrypted, $label)
     {
         $pdo = self::getInstance();

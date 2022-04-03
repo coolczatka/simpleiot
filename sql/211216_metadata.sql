@@ -8,3 +8,5 @@ CREATE TABLE `metadata` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `key_unique` (`key`) USING HASH
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+CREATE TABLE `kurdeeha_stajenka`.`reminds` ( `id` INT NOT NULL AUTO_INCREMENT , `datetime` DATETIME NOT NULL , `cyclical` INT NOT NULL DEFAULT '0' , `content` TEXT NOT NULL DEFAULT ' ' , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
