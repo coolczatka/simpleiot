@@ -11,6 +11,6 @@ class Crypt {
 
     public function decrypt($text)
     {
-        return openssl_decrypt($text, $this->alg, $this->key);
+        return openssl_decrypt($text, $this->alg, $this->key); 
     }
 }

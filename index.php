@@ -67,7 +67,7 @@ switch($command) {
         $jskp = DB::getMetaByKey('menu_szuflada');
         Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
         break;
-    case '/kp':
+    case '/menu':
         $jskp = DB::getMetaByKey('menu_szuflada');
         Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
         break;
