@@ -4,6 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 require 'Status.php';
 require 'DB.php';
 require 'Crypt.php';
+require 'Utils.php';
 
 use TelegramBot\TelegramBot;
 use Dotenv\Dotenv;
@@ -63,17 +64,12 @@ switch($command) {
         ]);
         break;
     case '/kp':
-        $jskp = DB::getMetaByKey('jak_sie_konczy_palic');
-        $photo = base64_decode($jskp['value']);
-        $tempfile = fopen('temp.jpeg', 'wb');
-        fwrite($tempfile, $photo);
-        fclose($tempfile);
-        $ch = curl_file_create('temp.jpeg');
-        $bot->sendPhoto([
-            'chat_id' => $update->message->chat->id,
-            'photo' => $ch
-        ]);
-        unlink('temp.jpeg');
+        $jskp = DB::getMetaByKey('menu_szuflada');
+        Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
+        break;
+    case '/kp':
+        $jskp = DB::getMetaByKey('menu_szuflada');
+        Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
         break;
     case '/tpiec':
         $bot->sendMessage([
@@ -120,5 +116,6 @@ switch($command) {
                         .'/getchatid - id chatu')
         ]);
         break;
+
 }
 die;
