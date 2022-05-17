@@ -7,7 +7,7 @@ class Utils {
         $tempfile = fopen('temp.'.$extension, 'wb');
         fwrite($tempfile, $photo);
         fclose($tempfile);
-        $ch = curl_file_create('temp.jpeg');
+        $ch = curl_file_create('temp.'.$extension);
         $bot->sendPhoto([
             'chat_id' => $chatid,
             'photo' => $ch
