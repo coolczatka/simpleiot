@@ -64,7 +64,7 @@ switch($command) {
         ]);
         break;
     case '/kp':
-        $jskp = DB::getMetaByKey('menu_szuflada');
+        $jskp = DB::getMetaByKey('jak_sie_konczy_palic');
         Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
         break;
     case '/menu':
@@ -113,6 +113,7 @@ switch($command) {
                         .'/tpiec - pobranie temperatury z pieca'.PHP_EOL
                         .'/przypomnij - ustaw przypomnienie rok-miesiac-dzien Tresc [r]'.PHP_EOL
                         .'/pokazprzypomnienia - lista przypomnien'.PHP_EOL
+                        .'/menu - menu szuflady'.PHP_EOL
                         .'/getchatid - id chatu')
         ]);
         break;
