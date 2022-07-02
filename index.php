@@ -101,6 +101,13 @@ switch($command) {
             return utf8_encode(($el['cyclical'] ? 'cykliczne ': '').$el['datetime'].' '.$el['content']);
         }, $reminds)), 'chat_id' => $update->message->chat->id]);
         break;    
+    case '/bilet':
+        $videofilename = $_SERVER['SERVER_NAME'] . '/' . 'bot/' . 'static/'.'bilet.mp4';
+        try {
+            $bot->sendVideo(['video' => $videofilename, 'chat_id' => $update->message->chat->id]);
+        }
+        catch(Exception $e){$bot->sendMessage(['text' => $e->getMessage(), 'chat_id' => $update->message->chat->id]);}
+        break;       
     case '/start':
     case '/help':
         $bot->sendMessage([
@@ -114,6 +121,7 @@ switch($command) {
                         .'/przypomnij - ustaw przypomnienie rok-miesiac-dzien Tresc [r]'.PHP_EOL
                         .'/pokazprzypomnienia - lista przypomnien'.PHP_EOL
                         .'/menu - menu szuflady'.PHP_EOL
+                        .'/bilet - instrukcja pobierania biletu'.PHP_EOL
                         .'/getchatid - id chatu')
         ]);
         break;
