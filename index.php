@@ -107,7 +107,15 @@ switch($command) {
             $bot->sendVideo(['video' => $videofilename, 'chat_id' => $update->message->chat->id]);
         }
         catch(Exception $e){$bot->sendMessage(['text' => $e->getMessage(), 'chat_id' => $update->message->chat->id]);}
-        break;       
+        break;
+    case '/kol':
+        $jskp = DB::getMetaByKey('call');
+        Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
+        break;
+    case '/niekol':
+        $jskp = DB::getMetaByKey('no_call');
+        Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
+        break;
     case '/start':
     case '/help':
         $bot->sendMessage([
@@ -122,6 +130,8 @@ switch($command) {
                         .'/pokazprzypomnienia - lista przypomnien'.PHP_EOL
                         .'/menu - menu szuflady'.PHP_EOL
                         .'/bilet - instrukcja pobierania biletu'.PHP_EOL
+                        .'/kol - info call'.PHP_EOL
+                        .'/niekol - info nie call'.PHP_EOL
                         .'/getchatid - id chatu')
         ]);
         break;
