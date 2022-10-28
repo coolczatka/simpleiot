@@ -91,6 +91,26 @@ class DB {
         return true;
     }
 
+    public static function deleteMetadataLike($pattern)
+    {
+        $pdo = self::getInstance();
+        $crypt = new Crypt($_ENV['AESKEY']);
+        $newvalue = '';
+        if($encrypted){
+            $newvalue = $crypt->encrypt($value);
+        }
+        else {
+            $newvalue = $value;
+        }
+        $likepattern = '%' . $pattern . '%';
+        $stmt = $pdo->prepare("DELETE FROM metadata WHERE `type`='password'AND (`label` like ? OR `key` = ?) LIMIT 1");
+        $stmt->bindParam(1, $likepattern, PDO::PARAM_STR);
+        $stmt->bindParam(2, $pattern, PDO::PARAM_STR);
+        $stmt->execute();
+
+        return true;
+    }
+
     public static function getMetaList($type)
     {
         $pdo = self::getInstance();
