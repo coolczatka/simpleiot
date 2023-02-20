@@ -37,14 +37,14 @@ if(!in_array($update->message->chat->id, [$chatId, $chatIdAlt])) {
 }
 try {
     switch($command) {
-        case '/stajenka_zamknij':
+        case '/s_zamknij':
             $bot->sendMessage([
                 'chat_id' => $update->message->chat->id,
                 'text' => 'Ok zamykam!'
             ]);
             DB::updateDeviceNewStatus($DEVICE_ID, Status::DRZWI_ZAMKNIETE);
             break;
-        case '/stajenka_otworz':
+        case '/s_otworz':
             $bot->sendMessage([
                 'chat_id' => $update->message->chat->id,
                 'text' => 'Ok otwieram!'
@@ -185,6 +185,7 @@ try {
                             .'/otworz - otwiera s'.PHP_EOL
                             .'/help - komendy'.PHP_EOL
                             .'/hasla - hasla do rzeczy [usun|dodaj]'.PHP_EOL
+                            .'/ai [--options json] tekst - wysłanie pytania do openai'.PHP_EOL
                             .'/kp - instrukcja jak się konczy palic'.PHP_EOL
                             .'/tpiec - pobranie temperatury z pieca'.PHP_EOL
                             .'/przypomnij - ustaw przypomnienie rok-miesiac-dzien Tresc [r]'.PHP_EOL
