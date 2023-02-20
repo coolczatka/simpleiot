@@ -154,6 +154,29 @@ try {
             $jskp = DB::getMetaByKey('no_call');
             Utils::convertImageFromBase64($jskp, $bot, $update->message->chat->id);
             break;
+        case '/ai':
+            $openAiKey = $_ENV['OPENAI_API_KEY'];
+            $openAi = new \Orhanerday\OpenAi\OpenAi($openAiKey);
+            $args = $update->message->getArgs();
+            $options = [];
+            if($args[0] == '--options') {
+                $options = json_decode($args[1], true);
+                array_shift($args);
+                array_shift($args);
+            }
+            $messageForBot = implode(' ', $args);
+
+            $complete = $openAi->completion(array_merge([
+                'model' => 'text-davinci-003',
+                'prompt' => $messageForBot,
+                'temperature' => 0.2,
+                'max_tokens' => 1000,
+//                'frequency_penalty' => 0,
+//                'presence_penalty' => 0.6,
+            ], $options));
+
+            $bot->sendMessage(['text' => json_decode($complete,true)['choices'][0]['text'], 'chat_id' => $update->message->chat->id]);
+            break;
         case '/start':
         case '/help':
             $bot->sendMessage([

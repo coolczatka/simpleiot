@@ -4,35 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc9b697d019706d05783ab31e7a5a23e",
+    "content-hash": "378f37f60b4362598e9d5f9a686b8dfd",
     "packages": [
         {
             "name": "graham-campbell/result-type",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Result-Type.git",
-                "reference": "7e279d2cd5d7fbb156ce46daada972355cea27bb"
+                "reference": "a878d45c1914464426dc94da61c9e1d36ae262a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/7e279d2cd5d7fbb156ce46daada972355cea27bb",
-                "reference": "7e279d2cd5d7fbb156ce46daada972355cea27bb",
+                "url": "https://api.github.com/repos/GrahamCampbell/Result-Type/zipball/a878d45c1914464426dc94da61c9e1d36ae262a8",
+                "reference": "a878d45c1914464426dc94da61c9e1d36ae262a8",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.0|^8.0",
-                "phpoption/phpoption": "^1.7.3"
+                "php": "^7.2.5 || ^8.0",
+                "phpoption/phpoption": "^1.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.5|^7.5|^8.5|^9.0"
+                "phpunit/phpunit": "^8.5.28 || ^9.5.21"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "GrahamCampbell\\ResultType\\": "src/"
@@ -45,7 +40,8 @@
             "authors": [
                 {
                     "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
                 }
             ],
             "description": "An Implementation Of The Result Type",
@@ -56,6 +52,10 @@
                 "Result-Type",
                 "result"
             ],
+            "support": {
+                "issues": "https://github.com/GrahamCampbell/Result-Type/issues",
+                "source": "https://github.com/GrahamCampbell/Result-Type/tree/v1.1.0"
+            },
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -66,20 +66,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-04-13T13:17:36+00:00"
+            "time": "2022-07-30T15:56:11+00:00"
         },
         {
             "name": "lukasss93/telegrambot-php",
-            "version": "v1.12.1",
+            "version": "v1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Lukasss93/telegrambot-php.git",
-                "reference": "08a66241da8d04934ef86acddd01a9f8718123f9"
+                "reference": "7f849c55b884c9eeeff34a5db4fafebd541c8bc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Lukasss93/telegrambot-php/zipball/08a66241da8d04934ef86acddd01a9f8718123f9",
-                "reference": "08a66241da8d04934ef86acddd01a9f8718123f9",
+                "url": "https://api.github.com/repos/Lukasss93/telegrambot-php/zipball/7f849c55b884c9eeeff34a5db4fafebd541c8bc1",
+                "reference": "7f849c55b884c9eeeff34a5db4fafebd541c8bc1",
                 "shasum": ""
             },
             "require": {
@@ -87,19 +87,19 @@
                 "ext-fileinfo": "*",
                 "ext-json": "*",
                 "ext-mbstring": "*",
-                "netresearch/jsonmapper": "v2.1.*",
-                "php": ">=7.2"
+                "netresearch/jsonmapper": "^v4.0",
+                "php": "^7.2|^8.0"
             },
             "type": "project",
             "autoload": {
+                "files": [
+                    "src/TelegramHelper.php"
+                ],
                 "psr-4": {
                     "TelegramBot\\": "src/",
                     "TelegramBot\\Types\\": "src/Types/",
                     "TelegramBot\\Constants\\": "src/Constants/"
-                },
-                "files": [
-                    "src/TelegramHelper.php"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -109,24 +109,29 @@
                 {
                     "name": "Luca Patera",
                     "email": "lucapatera@outlook.it",
-                    "homepage": "http://www.lucapatera.it/"
+                    "homepage": "https://www.lucapatera.it/"
                 }
             ],
             "description": "Framework for Telegram Bot API",
-            "time": "2021-03-10T21:20:05+00:00"
+            "support": {
+                "issues": "https://github.com/Lukasss93/telegrambot-php/issues",
+                "source": "https://github.com/Lukasss93/telegrambot-php/tree/v1.14.1"
+            },
+            "abandoned": "nutgram/nutgram",
+            "time": "2021-09-07T00:24:59+00:00"
         },
         {
             "name": "netresearch/jsonmapper",
-            "version": "v2.1.0",
+            "version": "v4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cweiske/jsonmapper.git",
-                "reference": "e0f1e33a71587aca81be5cffbb9746510e1fe04e"
+                "reference": "cfa81ea1d35294d64adb9c68aa4cb9e92400e53f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/e0f1e33a71587aca81be5cffbb9746510e1fe04e",
-                "reference": "e0f1e33a71587aca81be5cffbb9746510e1fe04e",
+                "url": "https://api.github.com/repos/cweiske/jsonmapper/zipball/cfa81ea1d35294d64adb9c68aa4cb9e92400e53f",
+                "reference": "cfa81ea1d35294d64adb9c68aa4cb9e92400e53f",
                 "shasum": ""
             },
             "require": {
@@ -134,10 +139,10 @@
                 "ext-pcre": "*",
                 "ext-reflection": "*",
                 "ext-spl": "*",
-                "php": ">=5.6"
+                "php": ">=7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.8.35 || ~5.7 || ~6.4 || ~7.0",
+                "phpunit/phpunit": "~7.5 || ~8.0 || ~9.0",
                 "squizlabs/php_codesniffer": "~3.5"
             },
             "type": "library",
@@ -159,33 +164,101 @@
                 }
             ],
             "description": "Map nested JSON structures onto PHP classes",
-            "time": "2020-04-16T18:48:43+00:00"
+            "support": {
+                "email": "cweiske@cweiske.de",
+                "issues": "https://github.com/cweiske/jsonmapper/issues",
+                "source": "https://github.com/cweiske/jsonmapper/tree/v4.1.0"
+            },
+            "time": "2022-12-08T20:46:14+00:00"
         },
         {
-            "name": "phpoption/phpoption",
-            "version": "1.7.5",
+            "name": "orhanerday/open-ai",
+            "version": "3.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/schmittjoh/php-option.git",
-                "reference": "994ecccd8f3283ecf5ac33254543eb0ac946d525"
+                "url": "https://github.com/orhanerday/open-ai.git",
+                "reference": "04abf7a4b651556a6af900475de7bfeab75ec1d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/994ecccd8f3283ecf5ac33254543eb0ac946d525",
-                "reference": "994ecccd8f3283ecf5ac33254543eb0ac946d525",
+                "url": "https://api.github.com/repos/orhanerday/open-ai/zipball/04abf7a4b651556a6af900475de7bfeab75ec1d5",
+                "reference": "04abf7a4b651556a6af900475de7bfeab75ec1d5",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9 || ^7.0 || ^8.0"
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.4"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.4.1",
-                "phpunit/phpunit": "^4.8.35 || ^5.7.27 || ^6.5.6 || ^7.0 || ^8.0 || ^9.0"
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "pestphp/pest": "^1.20",
+                "spatie/ray": "^1.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Orhanerday\\OpenAi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Orhan Erday",
+                    "email": "orhanerday@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OpenAI GPT-3 Api Client in PHP",
+            "homepage": "https://github.com/orhanerday/open-ai",
+            "keywords": [
+                "open-ai",
+                "orhanerday"
+            ],
+            "support": {
+                "issues": "https://github.com/orhanerday/open-ai/issues",
+                "source": "https://github.com/orhanerday/open-ai/tree/3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/orhanerday",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-10T09:15:29+00:00"
+        },
+        {
+            "name": "phpoption/phpoption",
+            "version": "1.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/schmittjoh/php-option.git",
+                "reference": "dc5ff11e274a90cc1c743f66c9ad700ce50db9ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/schmittjoh/php-option/zipball/dc5ff11e274a90cc1c743f66c9ad700ce50db9ab",
+                "reference": "dc5ff11e274a90cc1c743f66c9ad700ce50db9ab",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5 || ^8.0"
+            },
+            "require-dev": {
+                "bamarni/composer-bin-plugin": "^1.8",
+                "phpunit/phpunit": "^8.5.28 || ^9.5.21"
             },
             "type": "library",
             "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": true
+                },
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.9-dev"
                 }
             },
             "autoload": {
@@ -200,11 +273,13 @@
             "authors": [
                 {
                     "name": "Johannes M. Schmitt",
-                    "email": "schmittjoh@gmail.com"
+                    "email": "schmittjoh@gmail.com",
+                    "homepage": "https://github.com/schmittjoh"
                 },
                 {
                     "name": "Graham Campbell",
-                    "email": "graham@alt-three.com"
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
                 }
             ],
             "description": "Option Type for PHP",
@@ -214,6 +289,10 @@
                 "php",
                 "type"
             ],
+            "support": {
+                "issues": "https://github.com/schmittjoh/php-option/issues",
+                "source": "https://github.com/schmittjoh/php-option/tree/1.9.0"
+            },
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -224,24 +303,27 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-07-20T17:29:33+00:00"
+            "time": "2022-07-30T15:51:26+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
-            "version": "v1.22.1",
+            "version": "v1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
-                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e"
+                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/c6c942b1ac76c82448322025e084cadc56048b4e",
-                "reference": "c6c942b1ac76c82448322025e084cadc56048b4e",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/5bbc823adecdae860bb64756d639ecfec17b050a",
+                "reference": "5bbc823adecdae860bb64756d639ecfec17b050a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
+            },
+            "provide": {
+                "ext-ctype": "*"
             },
             "suggest": {
                 "ext-ctype": "For best performance"
@@ -249,7 +331,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.27-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -257,12 +339,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Ctype\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -286,6 +368,9 @@
                 "polyfill",
                 "portable"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.27.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -300,24 +385,27 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T16:49:33+00:00"
+            "time": "2022-11-03T14:55:06+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.22.1",
+            "version": "v1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "5232de97ee3b75b0360528dae24e73db49566ab1"
+                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/5232de97ee3b75b0360528dae24e73db49566ab1",
-                "reference": "5232de97ee3b75b0360528dae24e73db49566ab1",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1"
+            },
+            "provide": {
+                "ext-mbstring": "*"
             },
             "suggest": {
                 "ext-mbstring": "For best performance"
@@ -325,7 +413,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.27-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -333,12 +421,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Mbstring\\": ""
-                },
                 "files": [
                     "bootstrap.php"
-                ]
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -363,6 +451,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.27.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -377,20 +468,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-22T09:19:47+00:00"
+            "time": "2022-11-03T14:55:06+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.22.1",
+            "version": "v1.27.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "dc3063ba22c2a1fd2f45ed856374d79114998f91"
+                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/dc3063ba22c2a1fd2f45ed856374d79114998f91",
-                "reference": "dc3063ba22c2a1fd2f45ed856374d79114998f91",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
+                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
                 "shasum": ""
             },
             "require": {
@@ -399,7 +490,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.22-dev"
+                    "dev-main": "1.27-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -407,12 +498,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php80\\": ""
-                },
                 "files": [
                     "bootstrap.php"
                 ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
                 "classmap": [
                     "Resources/stubs"
                 ]
@@ -443,6 +534,9 @@
                 "portable",
                 "shim"
             ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.27.0"
+            },
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
@@ -457,43 +551,47 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-07T16:49:33+00:00"
+            "time": "2022-11-03T14:55:06+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v5.3.0",
+            "version": "v5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "b3eac5c7ac896e52deab4a99068e3f4ab12d9e56"
+                "reference": "1a7ea2afc49c3ee6d87061f5a233e3a035d0eae7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/b3eac5c7ac896e52deab4a99068e3f4ab12d9e56",
-                "reference": "b3eac5c7ac896e52deab4a99068e3f4ab12d9e56",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/1a7ea2afc49c3ee6d87061f5a233e3a035d0eae7",
+                "reference": "1a7ea2afc49c3ee6d87061f5a233e3a035d0eae7",
                 "shasum": ""
             },
             "require": {
                 "ext-pcre": "*",
-                "graham-campbell/result-type": "^1.0.1",
+                "graham-campbell/result-type": "^1.0.2",
                 "php": "^7.1.3 || ^8.0",
-                "phpoption/phpoption": "^1.7.4",
-                "symfony/polyfill-ctype": "^1.17",
-                "symfony/polyfill-mbstring": "^1.17",
-                "symfony/polyfill-php80": "^1.17"
+                "phpoption/phpoption": "^1.8",
+                "symfony/polyfill-ctype": "^1.23",
+                "symfony/polyfill-mbstring": "^1.23.1",
+                "symfony/polyfill-php80": "^1.23.1"
             },
             "require-dev": {
                 "bamarni/composer-bin-plugin": "^1.4.1",
                 "ext-filter": "*",
-                "phpunit/phpunit": "^7.5.20 || ^8.5.14 || ^9.5.1"
+                "phpunit/phpunit": "^7.5.20 || ^8.5.30 || ^9.5.25"
             },
             "suggest": {
                 "ext-filter": "Required to use the boolean validator."
             },
             "type": "library",
             "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": true
+                },
                 "branch-alias": {
-                    "dev-master": "5.3-dev"
+                    "dev-master": "5.5-dev"
                 }
             },
             "autoload": {
@@ -508,13 +606,13 @@
             "authors": [
                 {
                     "name": "Graham Campbell",
-                    "email": "graham@alt-three.com",
-                    "homepage": "https://gjcampbell.co.uk/"
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
                 },
                 {
                     "name": "Vance Lucas",
                     "email": "vance@vancelucas.com",
-                    "homepage": "https://vancelucas.com/"
+                    "homepage": "https://github.com/vlucas"
                 }
             ],
             "description": "Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.",
@@ -523,6 +621,10 @@
                 "env",
                 "environment"
             ],
+            "support": {
+                "issues": "https://github.com/vlucas/phpdotenv/issues",
+                "source": "https://github.com/vlucas/phpdotenv/tree/v5.5.0"
+            },
             "funding": [
                 {
                     "url": "https://github.com/GrahamCampbell",
@@ -533,7 +635,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-20T15:23:13+00:00"
+            "time": "2022-10-16T01:01:54+00:00"
         }
     ],
     "packages-dev": [],
@@ -542,7 +644,10 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "ext-json": "*",
+        "ext-curl": "*"
+    },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.2.0"
 }
